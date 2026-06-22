@@ -1,151 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hunain Khawaja Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hunain Khawaja — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #090b10;
+      --surface:   #10131a;
+      --card:      #13171f;
+      --border:    #1e2330;
+      --accent:    #7c6af7;
+      --accent2:   #f7826a;
+      --text:      #e8eaf0;
+      --muted:     #6b7280;
+      --faint:     #1a1f2e;
+      --radius:    12px;
+    }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body{
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
-    color:white;
-    line-height:1.6;
-}
+    html { scroll-behavior: smooth; }
 
-.container{
-    width:80%;
-    margin:auto;
-    padding:40px 0;
-}
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-header{
-    text-align:center;
-    padding:60px 0;
-}
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(9,11,16,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .9rem; color: var(--accent); letter-spacing: .05em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .9rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
 
-header h1{
-    font-size:3rem;
-}
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      max-width: 1100px; margin: 0 auto;
+      position: relative;
+    }
 
-header p{
-    font-size:1.2rem;
-    color:#cbd5e1;
-}
+    /* Animated grid backdrop */
+    .hero::before {
+      content: '';
+      position: fixed; inset: 0; z-index: -1;
+      background-image:
+        linear-gradient(var(--faint) 1px, transparent 1px),
+        linear-gradient(90deg, var(--faint) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: .4;
+    }
 
-section{
-    margin:40px 0;
-    background:rgba(255,255,255,0.05);
-    padding:20px;
-    border-radius:15px;
-}
+    /* Glow orb */
+    .hero::after {
+      content: '';
+      position: fixed; top: -20%; left: 40%; z-index: -1;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,106,247,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-h2{
-    color:#38bdf8;
-    margin-bottom:15px;
-}
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem; color: var(--accent); letter-spacing: .15em;
+      text-transform: uppercase; margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 32px; height: 1px; background: var(--accent);
+    }
 
-ul{
-    margin-left:20px;
-}
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      font-weight: 800; line-height: .95;
+      letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+    }
+    h1 .name-line { display: block; }
+    h1 .accent-word { color: var(--accent); }
 
-footer{
-    text-align:center;
-    padding:20px;
-    color:#94a3b8;
-}
-</style>
+    .hero-desc {
+      max-width: 520px;
+      font-size: 1.1rem; color: var(--muted); line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
 
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 3rem;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem; padding: .35rem .8rem;
+      border: 1px solid var(--border); border-radius: 999px;
+      color: var(--muted); background: var(--surface);
+    }
+    .tag.hot { border-color: var(--accent); color: var(--accent); }
+
+    .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+      font-size: .95rem; text-decoration: none; transition: all .2s;
+      cursor: pointer; display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      border: 1.5px solid var(--accent);
+    }
+    .btn-primary:hover { background: #6a58e8; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SECTION SHARED ── */
+    section { max-width: 1100px; margin: 0 auto; padding: 6rem 2.5rem; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem; text-transform: uppercase;
+      letter-spacing: .18em; color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -.025em;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 60%);
+      opacity: .3; margin: 0 2.5rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-card {
+      background: var(--card);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: .5rem 2rem; align-items: start;
+      transition: border-color .2s, transform .2s;
+    }
+    .exp-card:hover { border-color: var(--accent); transform: translateX(4px); }
+    .exp-role {
+      font-weight: 600; font-size: 1.05rem; margin-bottom: .25rem;
+    }
+    .exp-org { color: var(--accent); font-size: .9rem; margin-bottom: .75rem; }
+    .exp-desc { color: var(--muted); font-size: .9rem; line-height: 1.65; }
+    .exp-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem; color: var(--muted); white-space: nowrap;
+      padding-top: .2rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem 1.75rem;
+      transition: border-color .2s;
+    }
+    .skill-card:hover { border-color: var(--accent2); }
+    .skill-icon { font-size: 1.5rem; margin-bottom: .85rem; }
+    .skill-title { font-weight: 600; margin-bottom: .6rem; font-size: .95rem; }
+    .skill-items {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+    }
+    .skill-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; padding: .25rem .65rem;
+      background: var(--faint); border-radius: 4px; color: var(--muted);
+    }
+
+    /* ── PROJECTS ── */
+    .proj-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .proj-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: border-color .2s, transform .2s;
+      position: relative; overflow: hidden;
+    }
+    .proj-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity .2s;
+    }
+    .proj-card:hover { border-color: var(--border); transform: translateY(-3px); }
+    .proj-card:hover::before { opacity: 1; }
+    .proj-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem; color: var(--accent); margin-bottom: 1rem;
+    }
+    .proj-name { font-weight: 700; font-size: 1.1rem; margin-bottom: .65rem; }
+    .proj-desc { color: var(--muted); font-size: .9rem; line-height: 1.65; }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-row {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+    }
+    .cert-badge {
+      display: flex; align-items: center; gap: .75rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.4rem;
+      font-size: .9rem; transition: border-color .2s;
+    }
+    .cert-badge:hover { border-color: var(--accent2); }
+    .cert-icon { font-size: 1.25rem; }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 3rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .contact-box::after {
+      content: ''; position: absolute;
+      bottom: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(247,130,106,.12) 0%, transparent 70%);
+    }
+    .contact-box h2 { margin-bottom: 1rem; }
+    .contact-box p { color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-inline: auto; }
+    .contact-links {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2.5rem;
+      color: var(--muted); font-size: .85rem;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── SCROLL FADE ── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .contact-box { padding: 2rem 1.5rem; }
+      .exp-card { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&lt;HK /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-<header>
-    <h1>Hunain Khawaja</h1>
-    <p>Computer Engineering Student | Graphic Designer | Media Officer | Quran Teacher</p>
-</header>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Available for opportunities</div>
+  <h1>
+    <span class="name-line">Hunain</span>
+    <span class="name-line accent-word">Khawaja.</span>
+  </h1>
+  <p class="hero-desc">
+    Computer Engineering student at FAST NUCES · AI Prompt Engineer · Media Designer.
+    I build things that look good <em>and</em> work — from AI-generated visuals
+    to Arduino robots.
+  </p>
+  <div class="hero-tags">
+    <span class="tag hot">AI &amp; Prompt Eng.</span>
+    <span class="tag">Graphic Design</span>
+    <span class="tag">PC Setup Edits</span>
+    <span class="tag">C++ / Python</span>
+    <span class="tag">Adobe Suite</span>
+    <span class="tag">Video Editing</span>
+    <span class="tag">Team Leadership</span>
+  </div>
+  <div class="cta-row">
+    <a href="mailto:hunainkhawaja.777@gmail.com" class="btn btn-primary">✉ Get in touch</a>
+    <a href="https://www.linkedin.com/in/hunain-khawaja-795b67328" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    <a href="https://www.instagram.com/setup.hk" target="_blank" class="btn btn-ghost">🖥️ Setup Edits ↗</a>
+  </div>
+</div>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        I am a BS Computer Engineering student at FAST University with interests in
-        software development, AI, graphic designing, video editing, and community leadership.
-    </p>
+<hr class="divider"/>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label fade-in">Work</p>
+  <h2 class="fade-in">Experience</h2>
+  <div class="exp-list">
+
+    <div class="exp-card fade-in">
+      <div>
+        <div class="exp-role">AI Prompt Engineer &amp; Media Specialist</div>
+        <div class="exp-org">Genimage</div>
+        <div class="exp-desc">
+          Craft high-impact AI prompts for image generation campaigns. Design social media
+          graphics and ad creatives using Adobe Suite &amp; Canva. Collaborate cross-functionally
+          to ship polished creative deliverables on tight timelines.
+        </div>
+      </div>
+      <div class="exp-period">2024 – Present</div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div>
+        <div class="exp-role">Head Media Officer</div>
+        <div class="exp-org">Software Engineering Society — FAST</div>
+        <div class="exp-desc">
+          Led the media team end-to-end: designed 10+ event posters, produced 5 promotional
+          videos, and managed social channels — growing follower engagement measurably.
+        </div>
+      </div>
+      <div class="exp-period">2024 – Present</div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div>
+        <div class="exp-role">Event Manager</div>
+        <div class="exp-org">NASCon @ FAST</div>
+        <div class="exp-desc">
+          Coordinated logistics, scheduling, and multi-department media for one of Pakistan's
+          premier university computing conferences.
+        </div>
+      </div>
+      <div class="exp-period">2024</div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div>
+        <div class="exp-role">Online Qur'an Instructor</div>
+        <div class="exp-org">Independent</div>
+        <div class="exp-desc">
+          3+ years teaching Qur'an recitation and Hifz to children via Google Meet &amp; Zoom.
+          Currently guiding 3–4 active students. Certified Hafiz.
+        </div>
+      </div>
+      <div class="exp-period">2021 – Present</div>
+    </div>
+
+  </div>
 </section>
 
-<section>
-    <h2>Education</h2>
-    <p>
-        BS Computer Engineering<br>
-        FAST University (2024 - 2028)
-    </p>
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label fade-in">Toolkit</p>
+  <h2 class="fade-in">Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-title">AI &amp; Prompt Engineering</div>
+      <div class="skill-items">
+        <span class="skill-pill">Image Gen AI</span>
+        <span class="skill-pill">Prompt Design</span>
+        <span class="skill-pill">AI Workflows</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-title">Design &amp; Media</div>
+      <div class="skill-items">
+        <span class="skill-pill">Adobe Suite</span>
+        <span class="skill-pill">Canva</span>
+        <span class="skill-pill">Video Editing</span>
+        <span class="skill-pill">Graphic Design</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-icon">💻</div>
+      <div class="skill-title">Programming</div>
+      <div class="skill-items">
+        <span class="skill-pill">C++</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">AutoCAD</span>
+        <span class="skill-pill">MS Office</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-title">Leadership &amp; Soft Skills</div>
+      <div class="skill-items">
+        <span class="skill-pill">Public Speaking</span>
+        <span class="skill-pill">Team Management</span>
+        <span class="skill-pill">Event Planning</span>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section>
-    <h2>Experience</h2>
+<hr class="divider"/>
 
-    <h3>AI Prompt Engineer & Media Specialist - Genimage</h3>
-    <ul>
-        <li>Created and optimized AI prompts for image generation.</li>
-        <li>Worked on visual content creation and branding.</li>
-        <li>Managed social media and promotional content.</li>
-    </ul>
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label fade-in">Build</p>
+  <h2 class="fade-in">Projects</h2>
+  <div class="proj-grid">
 
-    <br>
+    <div class="proj-card fade-in">
+      <div class="proj-num">01</div>
+      <div class="proj-name">Console-Based Games</div>
+      <div class="proj-desc">
+        Collaborated in a team to design and implement console games in C++.
+        Responsible for game mechanics, input handling, and debugging.
+      </div>
+    </div>
 
-    <h3>Quran Teacher</h3>
-    <ul>
-        <li>Conducted online Quran classes for children and adults.</li>
-        <li>Guided students in Tajweed and memorization.</li>
-        <li>Developed lesson plans and student progress reports.</li>
-    </ul>
+    <div class="proj-card fade-in">
+      <div class="proj-num">02</div>
+      <div class="proj-name">Arduino Line-Following Car</div>
+      <div class="proj-desc">
+        Built an Arduino-controlled car that differentiates white surface from black
+        duct-tape using sensors and motor control. Implemented sensor calibration
+        and full motion logic.
+      </div>
+    </div>
 
-    <br>
-
-    <h3>Software Engineering Society - Media Team</h3>
-    <ul>
-        <li>Designed posters and promotional materials.</li>
-        <li>Managed event media coverage.</li>
-        <li>Collaborated with teams to increase engagement.</li>
-    </ul>
-
+  </div>
 </section>
 
+<hr class="divider"/>
+
+<!-- CERTIFICATIONS -->
 <section>
-    <h2>Skills</h2>
-    <ul>
-        <li>C++</li>
-        <li>Python</li>
-        <li>Graphic Designing</li>
-        <li>Video Editing</li>
-        <li>Public Speaking</li>
-        <li>Team Management</li>
-        <li>Prompt Engineering</li>
-        <li>Quran Teaching</li>
-    </ul>
+  <p class="section-label fade-in">Credentials</p>
+  <h2 class="fade-in">Certifications</h2>
+  <div class="cert-row">
+    <div class="cert-badge fade-in">
+      <span class="cert-icon">🏅</span>
+      <span>Software Engineering — arbisoft</span>
+    </div>
+    <div class="cert-badge fade-in">
+      <span class="cert-icon">🎪</span>
+      <span>Event Management — NASCon @ FAST</span>
+    </div>
+    <div class="cert-badge fade-in">
+      <span class="cert-icon">📖</span>
+      <span>Certified Hafiz &amp; Online Qur'an Instructor</span>
+    </div>
+  </div>
 </section>
 
-<section>
-    <h2>Languages</h2>
-    <ul>
-        <li>English</li>
-        <li>Urdu</li>
-        <li>Arabic (Quranic)</li>
-    </ul>
+<hr class="divider"/>
+
+<!-- CREATIVE CHANNELS -->
+<section id="creative">
+  <p class="section-label fade-in">On the internet</p>
+  <h2 class="fade-in">Creative Channels</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card fade-in" style="border-color:#2a1f3d;">
+      <div class="skill-icon">🖥️</div>
+      <div class="skill-title">PC Setup Edits</div>
+      <p style="color:var(--muted);font-size:.88rem;line-height:1.6;margin-bottom:1rem;">
+        Aesthetic edits of PC setups — dark themes, RGB rigs, and clean desk aesthetics.
+        Visual storytelling through hardware.
+      </p>
+      <a href="https://www.instagram.com/setup.hk" target="_blank"
+         style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);text-decoration:none;">
+        @setup.hk ↗
+      </a>
+    </div>
+
+    <div class="skill-card fade-in" style="border-color:#2a1f3d;">
+      <div class="skill-icon">✨</div>
+      <div class="skill-title">3D & Motion Design</div>
+      <p style="color:var(--muted);font-size:.88rem;line-height:1.6;margin-bottom:1rem;">
+        3D renders, motion graphics, and experimental visual design. Where engineering
+        meets art.
+      </p>
+      <a href="https://www.instagram.com/3d.hk.motion/" target="_blank"
+         style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);text-decoration:none;">
+        @3d.hk.motion ↗
+      </a>
+    </div>
+
+    <div class="skill-card fade-in" style="border-color:#2a1f3d;">
+      <div class="skill-icon">📖</div>
+      <div class="skill-title">Qalb Chronicles</div>
+      <p style="color:var(--muted);font-size:.88rem;line-height:1.6;margin-bottom:1rem;">
+        A personal blog-style account exploring reflections, faith, and everyday moments.
+        Writing as a creative outlet.
+      </p>
+      <a href="https://www.instagram.com/qalb.chronicals/" target="_blank"
+         style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);text-decoration:none;">
+        @qalb.chronicals ↗
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box fade-in">
+    <p class="section-label" style="text-align:center">Say hi</p>
+    <h2>Let's work together.</h2>
+    <p>Whether it's a creative campaign, a design project, or something AI-powered — I'm open to it.</p>
+    <div class="contact-links">
+      <a href="mailto:hunainkhawaja.777@gmail.com" class="btn btn-primary">✉ Email me</a>
+      <a href="https://www.linkedin.com/in/hunain-khawaja-795b67328" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="https://www.instagram.com/3d.hk.motion/" target="_blank" class="btn btn-ghost">3D Motion ↗</a>
+      <a href="https://www.instagram.com/setup.hk" target="_blank" class="btn btn-ghost">🖥️ Setup Edits ↗</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-    <p>© 2026 Hunain Khawaja</p>
+  Built by Hunain Khawaja · Rawalpindi, Pakistan · 2025
 </footer>
 
-</div>
-
+<script>
+  // Scroll-fade observer
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
