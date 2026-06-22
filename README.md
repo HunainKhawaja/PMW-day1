@@ -70,16 +70,11 @@ FAST University (2024 – 2028)
 
 ---
 
-## 📂 Repository Contents
 
-- index.html
-- README.md
-
----
 
 ## 📫 Contact
 
-GitHub: Your GitHub Username
+GitHub: HunainKhawaja
 
 ---
 
