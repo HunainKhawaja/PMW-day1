@@ -16,11 +16,14 @@
   <a href="https://www.linkedin.com/in/hunain-khawaja-795b67328">
     <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
+  <a href="https://www.instagram.com/setup.hk">
+    <img src="https://img.shields.io/badge/Setup%20Edits-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white"/>
+  </a>
   <a href="https://www.instagram.com/3d.hk.motion/">
-    <img src="https://img.shields.io/badge/3D%20Motion-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white"/>
+    <img src="https://img.shields.io/badge/3D%20Motion-%23C13584.svg?style=for-the-badge&logo=instagram&logoColor=white"/>
   </a>
   <a href="https://www.instagram.com/qalb.chronicals/">
-    <img src="https://img.shields.io/badge/Qalb%20Chronicles-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Qalb%20Chronicles-%238a3ab9.svg?style=for-the-badge&logo=instagram&logoColor=white"/>
   </a>
   <a href="mailto:hunainkhawaja.777@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
@@ -44,7 +47,7 @@ location   : Rawalpindi / Islamabad, Pakistan
 education  : BS Computer Engineering — FAST NUCES (2024–2028)
 role       : AI Prompt Engineer & Media Specialist @ Genimage
 languages  : English (Fluent) · Urdu (Native) · Arabic (Qur'anic)
-interests  : AI Tools · Creative Design · Hardware · Education
+interests  : AI Tools · Creative Design · PC Setups · Hardware · Education
 ```
 
 I'm a CE student who lives at the intersection of **technology and creativity**. During the day I'm engineering prompts for AI image generation pipelines. In the evenings I'm designing posters, editing videos, or teaching Qur'an online to students across the globe. I believe good engineers understand aesthetics — and good designers understand systems.
@@ -102,14 +105,17 @@ I'm a CE student who lives at the intersection of **technology and creativity**.
 
 ---
 
-## 📊 GitHub Stats
+## 🎨 Creative Channels
 
-<div align="center">
-  <img height="160" src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight&hide_border=true&bg_color=090b10&title_color=7c6af7&icon_color=f7826a&text_color=e8eaf0"/>
-  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=tokyonight&hide_border=true&bg_color=090b10&title_color=7c6af7&text_color=e8eaf0"/>
-</div>
+| Channel | What's on it | Link |
+|---------|-------------|------|
+| 🖥️ **Setup Edits** | Aesthetic PC setup edits — dark themes, RGB rigs, clean desk vibes | [@setup.hk](https://www.instagram.com/setup.hk) |
+| ✨ **3D & Motion** | 3D renders, motion graphics, experimental visual design | [@3d.hk.motion](https://www.instagram.com/3d.hk.motion/) |
+| 📖 **Qalb Chronicles** | Reflections, faith, and everyday moments | [@qalb.chronicals](https://www.instagram.com/qalb.chronicals/) |
 
 ---
+
+
 
 ## 📬 Contact
 
@@ -119,8 +125,9 @@ I'm a CE student who lives at the intersection of **technology and creativity**.
 |----------|------|
 | 📧 Email | [hunainkhawaja.777@gmail.com](mailto:hunainkhawaja.777@gmail.com) |
 | 💼 LinkedIn | [linkedin.com/in/hunain-khawaja-795b67328](https://www.linkedin.com/in/hunain-khawaja-795b67328) |
-| 📸 3D Motion | [@3d.hk.motion](https://www.instagram.com/3d.hk.motion/) |
-| 📱 Blog | [@qalb.chronicals](https://www.instagram.com/qalb.chronicals/) |
+| 🖥️ Setup Edits | [@setup.hk](https://www.instagram.com/setup.hk) |
+| ✨ 3D Motion | [@3d.hk.motion](https://www.instagram.com/3d.hk.motion/) |
+| 📖 Blog | [@qalb.chronicals](https://www.instagram.com/qalb.chronicals/) |
 | 📍 Location | Rawalpindi, Pakistan |
 
 </div>
